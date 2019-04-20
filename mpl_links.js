@@ -12,15 +12,15 @@
 
 */
 
-// 3. Return to the mp_links.js file in your editor and create an event listener for the load event that runs an anonymous function.
-window.addEventListener("load", function () {
-    // 4. Within the anonymous function, create the allselect variable referencing all select elements nested within the govLinks form.
-    var allSelect = document.getElementsByClassName("optionLinks");
+// Creates an event listener for the load event that runs an anonymous function.
+window.addEventListener("load", function (e) {
+    // The allselect variable references all select elements nested inside the govLinks form.
+    var allSelect = document.forms.govLinks;
 
-    // 5. Loop through the allSelect object collection and for each selection list in the collection create an anonymous function for the onchange event. Within this anonymous function, use the href property of the location object to change the page shown in the browser window to the value of the target of the event object that initiated the onchange event.
+    // Loops through the allSelect object collection. The href property of the location object to change the page shown in the browser window.
     for (var i = 0; i < allSelect.length; i++) {
-        document.addEventListener("onchange", function () {
-            allSelect.location.href.value = allSelect;
-        });
+        allSelect[i].onchange = function (e) {
+            window.location.href = e.target.value;
+        }
     }
 });
